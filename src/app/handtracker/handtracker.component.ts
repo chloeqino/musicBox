@@ -17,6 +17,7 @@ export class HandtrackerComponent implements OnInit {
   or slower rates
   */
   SAMPLERATE: number = 500; 
+  pointhistory:any[] = [];
   
   detectedGesture:string = "None"
   width:string = "400"
@@ -82,18 +83,25 @@ export class HandtrackerComponent implements OnInit {
         let predictions = this.model.detect(this.video.nativeElement).then((predictions: any) => {
             if (predictions.length <= 0) return;
             
+            
             let openhands = 0;
             let closedhands = 0;
             let pointing = 0;
             let pinching = 0;
             for(let p of predictions){
                 //uncomment to view label and position data
-                console.log(p.label + " at X: " + p.bbox[0] + ", Y: " + p.bbox[1] + " at X: " + p.bbox[2] + ", Y: " + p.bbox[3]);
+                //console.log(p.label + " at X: " + p.bbox[0] + ", Y: " + p.bbox[1] + " at X: " + p.bbox[2] + ", Y: " + p.bbox[3]);
                 
                 if(p.label == 'open') openhands++;
                 if(p.label == 'closed') closedhands++;
                 if(p.label == 'point') pointing++;
                 if(p.label == 'pinch') pinching++;
+
+                if(p.label == "closed"){
+                  this.pointhistory.push(p.bbox[2]);
+                  if (this.pointhistory.length > 3) this.pointhistory.shift();
+                  //console.log(this.pointhistory.length);
+                } 
                 
             }
 
@@ -111,9 +119,27 @@ export class HandtrackerComponent implements OnInit {
             if (pinching > 1) this.detectedGesture = "Two Hands Pinching";
             else if(pinching == 1) this.detectedGesture = "Hand Pinching";
 
-            if (openhands == 0 && closedhands == 0 && pointing == 0 && pinching == 0)
-                this.detectedGesture = "None";
+            if (closedhands == 1 && this.pointhistory.length == 3){
+              console.log(this.pointhistory[0] - this.pointhistory[2]);
+              if (this.pointhistory[0] > this.pointhistory[1] && this.pointhistory[1] > this.pointhistory[2] && this.pointhistory[0] - this.pointhistory[2] > 20 )
+                  this.detectedGesture = "Closed Going Right";
 
+              if (this.pointhistory[0] < this.pointhistory[1] && this.pointhistory[1] < this.pointhistory[2] && this.pointhistory[2] - this.pointhistory[0] > 20)
+                  this.detectedGesture = "Closed Going Left";
+            }
+
+            if (openhands == 1 && closedhands == 1) this.detectedGesture = "Open Hand and Closed Hand";
+            if (openhands == 1 && pointing == 1) this.detectedGesture = "Open Hand and Hand Pointing";
+            if (closedhands == 1 && pointing == 1) this.detectedGesture = "Closed Hand and Hand Pointing";
+            if (pointing == 1 && pinching == 1) this.detectedGesture = "Hand Pointing and Hand Pinching";
+            if (closedhands == 1 && pinching == 1) this.detectedGesture = "Closed Hand and Hand Pinching";
+            if (openhands == 1 && pinching == 1) this.detectedGesture = "Open Hand and Hand Pinching";
+
+            if (openhands == 0 && closedhands == 0 && pointing == 0 && pinching == 0){
+                this.pointhistory = [];
+                this.detectedGesture = "None";
+            }
+            
             this.onPrediction.emit(new PredictionEvent(this.detectedGesture))
         }, (err: any) => {
             console.log("ERROR")
