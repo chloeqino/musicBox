@@ -17,7 +17,8 @@ export class HandtrackerComponent implements OnInit {
   or slower rates
   */
   SAMPLERATE: number = 500; 
-  pointhistory:any[] = [];
+  openhandX:number = 0;
+  closedhandX:number = 0;
   
   detectedGesture:string = "None"
   width:string = "400"
@@ -97,11 +98,9 @@ export class HandtrackerComponent implements OnInit {
                 if(p.label == 'point') pointing++;
                 if(p.label == 'pinch') pinching++;
 
-                if(p.label == "closed"){
-                  this.pointhistory.push(p.bbox[2]);
-                  if (this.pointhistory.length > 3) this.pointhistory.shift();
-                  //console.log(this.pointhistory.length);
-                } 
+                if(p.label == "open") this.openhandX = p.bbox[0]; //gets x of open hand
+                if(p.label == "closed")this.closedhandX = p.bbox[0]; //gets x of closed hand
+                 
                 
             }
 
@@ -119,16 +118,15 @@ export class HandtrackerComponent implements OnInit {
             if (pinching > 1) this.detectedGesture = "Two Hands Pinching";
             else if(pinching == 1) this.detectedGesture = "Hand Pinching";
 
-            if (closedhands == 1 && this.pointhistory.length == 3){
-              console.log(this.pointhistory[0] - this.pointhistory[2]);
-              if (this.pointhistory[0] > this.pointhistory[1] && this.pointhistory[1] > this.pointhistory[2] && this.pointhistory[0] - this.pointhistory[2] > 20 )
-                  this.detectedGesture = "Closed Going Right";
+            if (openhands == 1 && closedhands == 1){
+   
+              if (this.openhandX < this.closedhandX){ 
+                this.detectedGesture = "Left Open Hand and Right Closed Hand";
+              } else {
+                this.detectedGesture = "Right Open Hand and Left Closed Hand";
+              }
 
-              if (this.pointhistory[0] < this.pointhistory[1] && this.pointhistory[1] < this.pointhistory[2] && this.pointhistory[2] - this.pointhistory[0] > 20)
-                  this.detectedGesture = "Closed Going Left";
-            }
-
-            if (openhands == 1 && closedhands == 1) this.detectedGesture = "Open Hand and Closed Hand";
+            } 
             if (openhands == 1 && pointing == 1) this.detectedGesture = "Open Hand and Hand Pointing";
             if (closedhands == 1 && pointing == 1) this.detectedGesture = "Closed Hand and Hand Pointing";
             if (pointing == 1 && pinching == 1) this.detectedGesture = "Hand Pointing and Hand Pinching";
@@ -136,7 +134,6 @@ export class HandtrackerComponent implements OnInit {
             if (openhands == 1 && pinching == 1) this.detectedGesture = "Open Hand and Hand Pinching";
 
             if (openhands == 0 && closedhands == 0 && pointing == 0 && pinching == 0){
-                this.pointhistory = [];
                 this.detectedGesture = "None";
             }
             
