@@ -30,4 +30,7 @@ export class TrackPageComponent implements OnInit {
   	//T ODO: Inject the spotifyService and use it to get the track data and it's audio features
   }
 
+  gohome(){
+    window.location.href = './';
+  }
 }
