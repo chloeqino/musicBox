@@ -39,6 +39,7 @@ export class HomePageComponent implements OnInit {
   audio:any = null;
   
   gesture: String = "";
+  songtitle: String = "click on the start button to play song!";
   constructor() { }
 
   ngOnInit(): void {
@@ -46,6 +47,9 @@ export class HomePageComponent implements OnInit {
 
   prediction(event: PredictionEvent){
     this.gesture = event.getPrediction();
+    if(this.gesture.includes("Point")){
+      this.nextsong();
+    }
   }
 
   nextsong(){
@@ -56,6 +60,8 @@ export class HomePageComponent implements OnInit {
     this.current = this.local_songs[rnum];
     this.audio = new Audio("assets/" + this.current["filename"]);
     this.audio.play();
+    this.songtitle = "now playing: "+this.current["name"]+" - "+this.current["artist"];
+
   }
 
   stopsong(){

@@ -4,12 +4,13 @@
 		<div [innerHTML]="gesture"></div>
 
 	</div>
-	<app-search class="col-8"></app-search>
+	<!--<app-search class="col-8"></app-search>-->
+	<div class="col-8">
+		<h2 [innerHTML]="songtitle"></h2>
+		<button type="button" (click)="nextsong()">next</button>
+		<button type="button" (click)="resumesong()">resume</button>
+		<button type="button" (click)="stopsong()">stop</button>
+	
+	</div>
 </div>
 
-<div>
-	<button type="button" (click)="nextsong()">next</button>
-	<button type="button" (click)="resumesong()">resume</button>
-	<button type="button" (click)="stopsong()">stop</button>
-
-</div>
