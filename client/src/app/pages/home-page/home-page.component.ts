@@ -73,9 +73,11 @@ export class HomePageComponent implements OnInit {
 
   prediction(event: PredictionEvent){
     this.gesture = event.getPrediction();
-    if(this.gesture.includes("Point")){
-      this.nextsong();
-    }
+    if(this.gesture == "Hand Pointing") this.nextsong();
+    if(this.gesture == "Closed Hand") this.stopsong();
+    if(this.gesture == "Open Hand") this.resumesong();
+    if(this.gesture == "Two Open Hands") this.gotopage();
+
   }
 
   nextsong(){

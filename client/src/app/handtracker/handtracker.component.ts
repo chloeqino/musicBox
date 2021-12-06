@@ -16,7 +16,7 @@ export class HandtrackerComponent implements OnInit {
   500, or one half second is about right, but feel free to experiment with faster
   or slower rates
   */
-  SAMPLERATE: number = 500; 
+  SAMPLERATE: number = 1000; 
   openhandX:number = 0;
   closedhandX:number = 0;
   
