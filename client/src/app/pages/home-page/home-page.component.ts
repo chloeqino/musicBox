@@ -29,10 +29,36 @@ export class HomePageComponent implements OnInit {
       "artist": "One Republic",
       "filename" : "Counting Stars.mp3"
     }, {
-      "id": "2918T2ucPJn7lIxP0IGZnW",
+      "id": "3gbBpTdY8lnQwqxNCcf795",
       "name": "Pompeii",
       "artist": "Bastille",
       "filename" : "Pompeii.mp3"
+    }, {
+
+      "id": "5dPz35akJjPqb17yeqNwqH",
+      "name": "Ghost",
+      "artist": "Justin Beiber",
+      "filename" : "Ghost.mp3"
+    }, {
+      "id": "5wANPM4fQCJwkGd4rN57mH",
+      "name": "Drivers License",
+      "artist": "Olivia Rodrigo",
+      "filename" : "Drivers License.mp3"
+    }, {
+      "id": "1zB4vmk8tFRmM9UULNzbLB",
+      "name": "Thunder",
+      "artist": "Imagine Dragons",
+      "filename" : "Thunder.mp3"
+    }, {
+      "id": "54bFM56PmE4YLRnqpW6Tha",
+      "name": "Therefore I Am",
+      "artist": "Billie Eilish",
+      "filename" : "Therefore I Am.mp3"
+    }, {
+      "id": "2qT1uLXPVPzGgFOx4jtEuo",
+      "name": "No Tears Left To Cry",
+      "artist": "Ariana Grande",
+      "filename" : "No Tears Left To Cry.mp3"
     }
   ];
   current:any = null;
@@ -53,10 +79,13 @@ export class HomePageComponent implements OnInit {
   }
 
   nextsong(){
-    if (this.audio != null){
-      this.audio.pause();
-    }
     var rnum = Math.floor(Math.random() * (this.local_songs.length));
+    if (this.current != null){
+      this.audio.pause();
+      while (this.local_songs[rnum] == this.current){ //makes sure next song isnt same as last song
+        rnum = Math.floor(Math.random() * (this.local_songs.length));
+      }
+    }
     this.current = this.local_songs[rnum];
     this.audio = new Audio("assets/" + this.current["filename"]);
     this.audio.play();
