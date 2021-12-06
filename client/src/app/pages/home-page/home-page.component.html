@@ -10,6 +10,7 @@
 		<button type="button" (click)="nextsong()">next</button>
 		<button type="button" (click)="resumesong()">resume</button>
 		<button type="button" (click)="stopsong()">stop</button>
+		<a *ngIf="current != null" [href]="'./track/' + current['id']" > Like the song? Click for more info on it</a> 
 	
 	</div>
 </div>

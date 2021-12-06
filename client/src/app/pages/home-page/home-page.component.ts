@@ -74,7 +74,7 @@ export class HomePageComponent implements OnInit {
 
   gotopage(){
     if (this.current != null){
-      //redirect to track page
+      window.location.href = './track/' + this.current['id'];
     }
   }
   
