@@ -1,0 +1,24 @@
+<div class="row">
+<div class="col-4">
+    <app-handtracker (onPrediction)="prediction($event)"></app-handtracker>
+    <div [innerHTML]="gesture"></div>
+
+</div>
+<div class="content col-7">
+    <h2>who is the artist?</h2>
+<div class="row">
+   
+    <div class="col-12">music
+        <audio controls>
+            
+            <source [src]="current.songurl" type="audio/mpeg">
+          Your browser does not support the audio element.
+          </audio>
+    </div>
+    <button class="col-5" id="left" (click)="getAnswer(1)" [ngClass]="{'focusBtn' : answer==1}">{{current.left}}</button>
+    
+    <button class="col-5" id="right" (click)="getAnswer(2)" [ngClass]="{'focusBtn' : answer==2}">{{current.right}}</button>
+</div>
+<button [disabled]="answer == 0" (click)="onSubmit()">Submit</button>
+</div>
+</div>

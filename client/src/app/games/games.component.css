@@ -1,0 +1,24 @@
+.content{
+    width: 100%;
+    text-align: center;
+    
+}
+.content .col-5
+{
+    border:1px solid;
+    display: inline-block;
+    
+    background-color: white;
+    -webkit-appearance: none;
+}
+.content .col-5:focus{
+outline: none;
+}
+.content #right{
+    float: right;
+}
+
+.content .focusBtn{
+   background-color: blueviolet;
+   color:white;
+}
