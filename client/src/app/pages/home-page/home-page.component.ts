@@ -38,7 +38,7 @@ export class HomePageComponent implements OnInit {
       "id": "5dPz35akJjPqb17yeqNwqH",
       "name": "Ghost",
       "artist": "Justin Beiber",
-      "filename" : "Ghost.mp3"
+      "filename" : "ghost.mp3"
     }, {
       "id": "5wANPM4fQCJwkGd4rN57mH",
       "name": "Drivers License",
