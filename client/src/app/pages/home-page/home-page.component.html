@@ -2,6 +2,24 @@
 	<div class="col-4">
 		<app-handtracker (onPrediction)="prediction($event)"></app-handtracker>
 		<div [innerHTML]="gesture"></div>
+	
+	<div>
+		<h5>Use hand gestures to control the app!</h5>
+		<p>
+			<b>Pointing hand</b> - Play a random track
+		</p>
+		<p>
+			<b>Closed hand</b> - Pause the current track
+		</p>
+		<p>
+			<b>Open hand</b> - Resume the current track
+		</p>
+		<p>
+			<b>Two Open Hands</b> - Go to track's page
+		</p>
+		
+	</div>
+
 
 	</div>
 	<!--<app-search class="col-8"></app-search>-->
