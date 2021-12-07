@@ -15,8 +15,8 @@ export class GamesComponent implements OnInit {
   gesture: String = "";
   current:any;
   next:boolean = false;
-  rightmsg:String = "";
-  leftmsg:String = "";
+  rightmsg:String = " ";
+  leftmsg:String = " ";
   check:String="";
   currentaudio="";
   index = 0;
@@ -102,12 +102,12 @@ export class GamesComponent implements OnInit {
     }
     if(this.current.key==1)
     {
-      this.leftmsg = "<strong>&#10003;</strong>";
-      this.rightmsg = "<strong>X</strong>";
+      this.leftmsg = "\u2713";
+      this.rightmsg = "X";
     }else if(this,this.current.key==2)
     {
-      this.rightmsg = "<strong class=\"green\">&#10003;</strong>";
-      this.leftmsg = "<strong>X</strong>";
+      this.rightmsg = "\u2713";
+      this.leftmsg = "X";
     }
     this.next = true;
     this.answer = 0;

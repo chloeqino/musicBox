@@ -2,6 +2,17 @@
 <div class="col-4">
     <app-handtracker (onPrediction)="prediction($event)"></app-handtracker>
     <div [innerHTML]="gesture"></div>
+    <div>
+		<h5>Use hand gestures to choose the answer!</h5>
+		<p>
+			<b>Opened left hand and closed right hand</b><br> - choose the option on the left hand side
+		</p>
+		<p>
+			<b>Opened right hand and closed left hand</b><br> - choose the option on the right hand side
+		</p>
+		
+		
+	</div>
 
 </div>
 <div class="content col-7" *ngIf="on">
@@ -22,24 +33,29 @@
           
     </div>
     <div class="col-5">
+        <div class="col">L</div>  
     <button class="col-12 option" id="left" (click)="getAnswer(1)" [ngClass]="{'focusBtn' : answer==1}">{{current.left}}</button>
-    <div class="col-12 label" [innerHTML]="leftmsg" [ngClass]="{'green' : current.key==1,'red':current.key==2}"></div>
+    <div class="col-12 label" [ngClass]="{'green' : current.key==1,'red':current.key==2}">
+        {{leftmsg}}
+    </div>
     </div>
     <div class="col-2"></div>
     <div class="col-5">
-        
+    <div class="col">R</div>  
     <button class="col-12 option" id="right" (click)="getAnswer(2)" [ngClass]="{'focusBtn' : answer==2}">{{current.right}}</button>
-    <div class="col-12 label" [innerHTML]="rightmsg" [ngClass]="{'green' : current.key==2,'red':current.key==1}"></div>   
+    <div class="col-12 label"  [ngClass]="{'green' : current.key==2,'red':current.key==1}">{{rightmsg}}</div>   
 </div>
 </div>
 <div class="row" id="navbtn">
-<button [disabled]="answer == 0" (click)="onSubmit()">Submit</button>
-<button [disabled]="!next" (click)="toNext()">Next ></button>
+<button [disabled]="answer == 0" (click)="onSubmit()" *ngIf="!next">Submit</button>
+<button *ngIf="next" (click)="toNext()">Next ></button>
 </div>
 </div>
 <div class="restart" *ngIf="!on">
     <h1>Game Completed!</h1>
     <button (click)="restart()" id="restart">Restart</button>
-    <button (click)="back()" id="back">Go Back to Home Page</button>
+    <i class="note">(open both hands)</i><br><br>
+    <button (click)="back()" id="back">Go Back to Home Page</button><br>
+    <i class="note">(close both hands)</i>
 </div>
 </div>

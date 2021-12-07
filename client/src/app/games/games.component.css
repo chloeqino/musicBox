@@ -68,6 +68,6 @@ outline: none;
     border:15px solid blueviolet;
     color:blueviolet
 }
-#left{
-    
+.note{
+    color:rgb(89, 94, 145);
 }
