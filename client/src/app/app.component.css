@@ -1,6 +1,20 @@
 nav {
 	margin-bottom: 20px;
+	background-color: #643CB4 !important;
+	color:lavender !important;
 }
 .nav-item a{
-	margin-right: 14px;;
+	margin-right: 25px;
+	color:lavender;
+}
+.navbar-brand{
+	color:lavender;
+}
+#menu{
+	width: 100%;
+	display: inline-table;
+	text-align: right !important;
+}
+#log{
+	background:#f33b97;
 }

@@ -9,6 +9,37 @@
 .red{
     color:red;
 }
+.restart{
+    text-align: center;
+}
+#restart{
+    background-color: purple;
+    color:white;
+    display: table;
+    padding: 4px 10px;
+    margin: 14px auto;
+}
+#back{
+    background:none;
+    border:none;
+    text-decoration: underline;
+}
+#restart,#back{
+    width: 70%;
+    text-align: center;
+}
+#navbtn{
+    text-align: center;
+    display: block;
+}
+.greenbg{
+    background-color: green;
+    color:white
+}
+.redbg{
+    background-color: red;
+    color:white;
+}
 .content .option
 {
     border:1px solid;
@@ -25,10 +56,18 @@ outline: none;
 }
 .label{
     display: block;
-    margin: 0 10px;
+    margin: 0 0px;
 }
 
 .content .focusBtn{
    background-color: blueviolet;
-   color:white;
+   color:white !important;
+}
+.option{
+    padding: 40px 20px;
+    border:15px solid blueviolet;
+    color:blueviolet
+}
+#left{
+    
 }

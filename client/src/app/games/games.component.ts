@@ -127,6 +127,9 @@ export class GamesComponent implements OnInit {
       if(this.gesture=="Two Closed Hands"){
         this.back();
       }
+      if(this.gesture=="Two Open Hands"){
+        this.restart();
+      }
     }
   }
   getAnswer(i){

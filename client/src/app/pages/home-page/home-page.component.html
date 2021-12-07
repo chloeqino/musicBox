@@ -6,10 +6,19 @@
 	</div>
 	<!--<app-search class="col-8"></app-search>-->
 	<div class="col-8">
+		<button type="button" (click)="nextsong()" id="shuffle">Shuffle <span class="material-icons-outlined dice">
+			casino
+			</span>
+			</button>
 		<h2 [innerHTML]="songtitle"></h2>
-		<button type="button" (click)="nextsong()">next</button>
-		<button type="button" (click)="resumesong()">resume</button>
-		<button type="button" (click)="stopsong()">stop</button>
+		
+		<button type="button" (click)="resumesong()" *ngIf="!playing" class="btn-circle btn-xl"><span class="material-icons control">
+			play_arrow
+			</span></button>
+		<button type="button" (click)="stopsong()" *ngIf="playing" class="btn-circle btn-xl"><span class="material-icons control">
+			pause
+			</span></button>
+			<br>
 		<a *ngIf="current != null" [href]="'./track/' + current['id']" > Like the song? Click for more info on it</a> 
 	
 	</div>

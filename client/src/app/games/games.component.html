@@ -7,8 +7,10 @@
 <div class="content col-7" *ngIf="on">
     <h2>who is the artist?</h2>
 <div class="row">
-   <div [innerHTML]="check" class="col-12"></div>
-    <div class="col-12">music
+   <div  class="col-12" [ngClass]="{'greenbg' : check=='correct','redbg':check=='wrong'}">
+       {{check}}&nbsp;
+    </div>
+    <div class="col-12">
        
             
            
@@ -23,20 +25,21 @@
     <button class="col-12 option" id="left" (click)="getAnswer(1)" [ngClass]="{'focusBtn' : answer==1}">{{current.left}}</button>
     <div class="col-12 label" [innerHTML]="leftmsg" [ngClass]="{'green' : current.key==1,'red':current.key==2}"></div>
     </div>
+    <div class="col-2"></div>
     <div class="col-5">
         
     <button class="col-12 option" id="right" (click)="getAnswer(2)" [ngClass]="{'focusBtn' : answer==2}">{{current.right}}</button>
     <div class="col-12 label" [innerHTML]="rightmsg" [ngClass]="{'green' : current.key==2,'red':current.key==1}"></div>   
 </div>
 </div>
-<div class="row">
+<div class="row" id="navbtn">
 <button [disabled]="answer == 0" (click)="onSubmit()">Submit</button>
-<button [disabled]="!next" (click)="toNext()">Next</button>
+<button [disabled]="!next" (click)="toNext()">Next ></button>
 </div>
 </div>
 <div class="restart" *ngIf="!on">
     <h1>Game Completed!</h1>
-    <button (click)="restart()">Restart</button>
-    <button (click)="back()">Go Back to Home Page</button>
+    <button (click)="restart()" id="restart">Restart</button>
+    <button (click)="back()" id="back">Go Back to Home Page</button>
 </div>
 </div>

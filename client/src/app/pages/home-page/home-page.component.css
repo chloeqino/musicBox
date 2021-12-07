@@ -1,0 +1,46 @@
+.btn-circle{
+    border-radius: 50%;
+    padding: 10px 11px 5px 11px;
+    font-size: 22px;
+    text-align: center;
+    vertical-align: baseline;
+    border-color:blueviolet;
+    background: none;
+    
+
+}
+
+.control{
+    font-size: 36px !important;
+    color:blueviolet;
+}
+#shuffle{
+    vertical-align:middle;
+    position: relative;
+    border:none;
+    font-size: 48px;
+    background: none;
+    color:#f33b97;
+    
+   
+}
+#shuffle:hover .dice{
+    transform: rotate(20deg);
+    transition-duration: 0.2s;;
+   
+    
+}
+#shuffle:focus{
+    outline: 0;;
+}
+#shuffle:hover {
+    transform: translate(0px,-3px);
+    transition-duration: 0.2s;;
+   
+    
+}
+.dice{
+    position: relative;
+    top: 5px;
+    font-size:48px;
+}

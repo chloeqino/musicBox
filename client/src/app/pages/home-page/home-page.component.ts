@@ -63,7 +63,7 @@ export class HomePageComponent implements OnInit {
   ];
   current:any = null;
   audio:any = null;
-  
+  playing:boolean=false;
   gesture: String = "";
   songtitle: String = "click on the start button to play song!";
   constructor() { }
@@ -91,15 +91,18 @@ export class HomePageComponent implements OnInit {
     this.current = this.local_songs[rnum];
     this.audio = new Audio("assets/" + this.current["filename"]);
     this.audio.play();
+    this.playing=true;
     this.songtitle = "now playing: "+this.current["name"]+" - "+this.current["artist"];
 
   }
 
   stopsong(){
     if(this.audio != null) this.audio.pause();
+    this.playing=false;
   }
 
   resumesong(){
+    this.playing=true;
     if(this.audio != null) this.audio.play();
   }
 
