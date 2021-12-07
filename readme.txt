@@ -37,7 +37,7 @@ pointing hand to chose a random song. We also wanted to be able to switch betwee
 that action. If the user liked the song, we added a feature where they can go to the tracks page that has more information
 on it by using the two open hands gesture. 
 
-For the quiz game, we incorporate three hand gestures to be able to use it; left hand open right hand closed, right hand open
-left hand closed, and two closed hands. To pick on of the two options, you can chose the left option by using the left hand open
+For the quiz game, we incorporate four hand gestures to be able to use it; left hand open right hand closed, right hand open
+left hand closed, two closed hands, and two open hands. To pick on of the two options, you can chose the left option by using the left hand open
 right hand closed gesture, and vice versa with the right option. We also implemented being able to quit the game by using
-the two closed hands gesture.
+the two closed hands gesture or restart the game using two open hands gesture.
