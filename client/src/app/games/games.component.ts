@@ -31,6 +31,25 @@ export class GamesComponent implements OnInit {
   "right":"Doja Cat",
   "key":1
 },
+{
+  "songurl":"assets/The Violence.mp3",
+  "left":"Rise Against",
+  "right":"System of a Down",
+  "key":1
+},
+{
+  "songurl":"assets/Love Story (Taylor’s Version).mp3",
+  "left":"Olivia Rodrigo",
+  "right":"Taylor Swift",
+  "key":2
+},
+{
+  "songurl":"assets/Thunder.mp3",
+  "left":"Bastille",
+  "right":"Imagine Dragons",
+  "key":2
+},
+
   ];
   constructor() { }
 
