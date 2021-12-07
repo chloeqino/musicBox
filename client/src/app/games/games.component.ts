@@ -9,6 +9,7 @@ import { PredictionEvent } from '../prediction-event';
   styleUrls: ['./games.component.css']
 })
 export class GamesComponent implements OnInit {
+  on:boolean = true;
   answer:Number = 0;
   gesture: String = "";
   current:any;
@@ -41,6 +42,7 @@ export class GamesComponent implements OnInit {
     if(this.index>=this.quizzes.length)
     {
       this.index=0;
+      this.on = false;
     }
     this.current = this.quizzes[this.index];
     this.next=false;
@@ -48,6 +50,12 @@ export class GamesComponent implements OnInit {
     this.rightmsg="";
     this.leftmsg="";
     
+  }
+  back(){
+    window.location.href = "/";
+  }
+  restart(){
+    this.on=true;
   }
   onSubmit(){
     if(this.answer==this.current.key)
