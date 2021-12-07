@@ -17,6 +17,7 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { ThermometerComponent } from './components/thermometer/thermometer.component';
 import { HandtrackerComponent } from './handtracker/handtracker.component';
 import { GamesComponent } from './games/games.component';
+import { PlayerComponent } from './player/player.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { GamesComponent } from './games/games.component';
     HomePageComponent,
     ThermometerComponent,
     HandtrackerComponent,
-    GamesComponent
+    GamesComponent,
+    PlayerComponent
   ],
   imports: [
     BrowserModule,

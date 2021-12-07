@@ -9,6 +9,7 @@ import { PredictionEvent } from '../prediction-event';
   styleUrls: ['./games.component.css']
 })
 export class GamesComponent implements OnInit {
+  switch = false;
   on:boolean = true;
   answer:Number = 0;
   gesture: String = "";
@@ -17,6 +18,7 @@ export class GamesComponent implements OnInit {
   rightmsg:String = "";
   leftmsg:String = "";
   check:String="";
+  currentaudio="";
   index = 0;
   quizzes: any = [
     {"songurl":"assets/Sunflower.mp3",
@@ -34,8 +36,14 @@ export class GamesComponent implements OnInit {
 
   ngOnInit(): void {
     this.current = this.quizzes[this.index];
+    this.currentaudio=this.current.songurl;
+    
+    //document.getElementById("audio").load();
+    //document.getElementById("audio").play();
   }
-
+  ngAfterViewInit(){
+    document.getElementById("audio").load();
+ }
   toNext()
   { 
     this.index++;
@@ -44,11 +52,18 @@ export class GamesComponent implements OnInit {
       this.index=0;
       this.on = false;
     }
+    document.getElementById("audio").load();
+    //document.getElementById("audio").play();
+    
+    this.switch = false;
     this.current = this.quizzes[this.index];
+    this.currentaudio = this.current.songurl;
+    
     this.next=false;
     this.check="";
     this.rightmsg="";
     this.leftmsg="";
+    
     
   }
   back(){
@@ -77,6 +92,7 @@ export class GamesComponent implements OnInit {
     this.next = true;
     this.answer = 0;
     console.log("next");
+    this.switch = true;
   }
   prediction(event: PredictionEvent){
     this.gesture = event.getPrediction();
