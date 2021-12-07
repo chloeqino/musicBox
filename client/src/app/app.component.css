@@ -1,3 +1,6 @@
 nav {
 	margin-bottom: 20px;
 }
+.nav-item a{
+	margin-right: 14px;;
+}
