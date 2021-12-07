@@ -49,7 +49,6 @@ export class GamesComponent implements OnInit {
   "right":"Imagine Dragons",
   "key":2
 },
-
   ];
   constructor() { }
 
@@ -61,6 +60,7 @@ export class GamesComponent implements OnInit {
     //document.getElementById("audio").play();
   }
   ngAfterViewInit(){
+    
     document.getElementById("audio").load();
  }
   toNext()
@@ -71,6 +71,7 @@ export class GamesComponent implements OnInit {
       this.index=0;
       this.on = false;
     }
+    
     document.getElementById("audio").load();
     //document.getElementById("audio").play();
     
@@ -121,6 +122,11 @@ export class GamesComponent implements OnInit {
     else if(this.gesture=="Right Open Hand and Left Closed Hand")
     {
       this.answer = 2;
+    }
+    if(this.on==false){
+      if(this.gesture=="Two Closed Hands"){
+        this.back();
+      }
     }
   }
   getAnswer(i){
