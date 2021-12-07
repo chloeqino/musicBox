@@ -3,11 +3,17 @@
     text-align: center;
     
 }
-.content .col-5
+.green{
+    color:green !important;
+}
+.red{
+    color:red;
+}
+.content .option
 {
     border:1px solid;
-    display: inline-block;
-    
+    display: block;
+    margin: 12px 10px;
     background-color: white;
     -webkit-appearance: none;
 }
@@ -15,7 +21,11 @@
 outline: none;
 }
 .content #right{
-    float: right;
+    
+}
+.label{
+    display: block;
+    margin: 0 10px;
 }
 
 .content .focusBtn{

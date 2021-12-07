@@ -7,7 +7,7 @@
 <div class="content col-7">
     <h2>who is the artist?</h2>
 <div class="row">
-   
+   <div [innerHTML]="check" class="col-12"></div>
     <div class="col-12">music
         <audio controls>
             
@@ -15,10 +15,19 @@
           Your browser does not support the audio element.
           </audio>
     </div>
-    <button class="col-5" id="left" (click)="getAnswer(1)" [ngClass]="{'focusBtn' : answer==1}">{{current.left}}</button>
-    
-    <button class="col-5" id="right" (click)="getAnswer(2)" [ngClass]="{'focusBtn' : answer==2}">{{current.right}}</button>
+    <div class="col-5">
+    <button class="col-12 option" id="left" (click)="getAnswer(1)" [ngClass]="{'focusBtn' : answer==1}">{{current.left}}</button>
+    <div class="col-12 label" [innerHTML]="leftmsg" [ngClass]="{'green' : current.key==1,'red':current.key==2}"></div>
+    </div>
+    <div class="col-5">
+        
+    <button class="col-12 option" id="right" (click)="getAnswer(2)" [ngClass]="{'focusBtn' : answer==2}">{{current.right}}</button>
+    <div class="col-12 label" [innerHTML]="rightmsg" [ngClass]="{'green' : current.key==2,'red':current.key==1}"></div>   
 </div>
+</div>
+<div class="row">
 <button [disabled]="answer == 0" (click)="onSubmit()">Submit</button>
+<button [disabled]="!next" (click)="toNext()">Next</button>
+</div>
 </div>
 </div>
