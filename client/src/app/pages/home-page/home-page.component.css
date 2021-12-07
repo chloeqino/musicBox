@@ -21,8 +21,13 @@
     font-size: 48px;
     background: none;
     color:#f33b97;
+    transition-duration: 0.2s;
     
    
+}
+.main{
+    text-align: center;;
+    margin-top: 30px;;
 }
 #shuffle:hover .dice{
     transform: rotate(20deg);
@@ -33,8 +38,8 @@
 #shuffle:focus{
     outline: 0;;
 }
-#shuffle:hover {
-    transform: translate(0px,-3px);
+#shuffle:active {
+    transform: translate(0px,-60px);
     transition-duration: 0.2s;;
    
     
@@ -42,5 +47,5 @@
 .dice{
     position: relative;
     top: 5px;
-    font-size:48px;
+    font-size:350px;
 }

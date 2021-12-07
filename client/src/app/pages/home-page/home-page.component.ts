@@ -65,7 +65,7 @@ export class HomePageComponent implements OnInit {
   audio:any = null;
   playing:boolean=false;
   gesture: String = "";
-  songtitle: String = "click on the start button to play song!";
+  songtitle: String = "click on the giant dice above to play song!";
   constructor() { }
 
   ngOnInit(): void {
@@ -73,7 +73,10 @@ export class HomePageComponent implements OnInit {
 
   prediction(event: PredictionEvent){
     this.gesture = event.getPrediction();
-    if(this.gesture == "Hand Pointing") this.nextsong();
+    if(this.gesture == "Hand Pointing") {
+      this.nextsong();
+      //document.getElementById("shuffle").style.transform = "rotate(20deg)";
+    }
     if(this.gesture == "Closed Hand") this.stopsong();
     if(this.gesture == "Open Hand") this.resumesong();
     if(this.gesture == "Two Open Hands") this.gotopage();
